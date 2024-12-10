@@ -1,101 +1,69 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React from 'react';
+import { FaBookOpen, FaArrowRight, FaSignInAlt, FaHome } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
+
+const LandingPage = () => {
+  const router = useRouter();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white">
+      <header className="bg-gray shadow-md py-4">
+        <div className="container mx-auto flex items-center justify-between px-6">
+          <h1 className="text-3xl font-bold text-white-600">WattPod</h1>
+          <nav className="space-x-8 flex items-center">
+            <a href="#" className="text-white hover:text-pink-600">
+              <FaHome className="text-2xl" />
+            </a>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      <section className="flex flex-col items-center justify-center flex-grow bg-gradient-to-r from-whitew-500 via-purple-500 to-indigo-500 text-white text-center py-16 px-4 relative">
+        <div className="absolute inset-0 bg-black opacity-5"></div>
+        <div className="relative z-10">
+          <h1 className="text-4xl font-extrabold mb-4">Welcome to WattPod</h1>
+          <p className="text-xl mb-6 max-w-lg mx-auto">Dive into a world of endless stories and incredible authors. Explore, read, and share your thoughts.</p>
+          <div className="flex justify-center space-x-4 mb-8">
+            <button
+              onClick={() => router.push('/signup')}
+              className="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full text-lg flex items-center justify-center transition duration-300"
+            >
+              Get Started <FaArrowRight className="ml-2" />
+            </button>
+            <button
+              onClick={() => router.push('/login')}
+              className="bg-gray-800 text-white hover:bg-gray-700 px-8 py-3 rounded-full text-lg flex items-center justify-center transition duration-300"
+            >
+              Login <FaSignInAlt className="ml-2" />
+            </button>
+          </div>
+          <div className="flex justify-center space-x-8 mt-10">
+            <div className="text-center">
+              <FaBookOpen className="text-6xl text-white mb-4" />
+              <p className="text-xl">Discover Books</p>
+            </div>
+            <div className="text-center">
+              <FaArrowRight className="text-6xl text-white mb-4 animate-bounce" />
+              <p className="text-xl">Read Anytime</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-800 text-white py-8 mt-12">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 WattPod. All Rights Reserved.</p>
+          <div className="mt-4">
+            <a href="#" className="text-pink-400 hover:text-pink-600 mx-3">Privacy Policy</a>
+            <a href="#" className="text-pink-400 hover:text-pink-600 mx-3">Terms of Service</a>
+            <a href="#" className="text-pink-400 hover:text-pink-600 mx-3">Contact</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
-}
+};
+
+export default LandingPage;
